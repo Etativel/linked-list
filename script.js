@@ -117,8 +117,15 @@ class LinkedList {
     return listOfArray.join(" -> ");
   }
 
-  insertAt(index) {
-    if (!this.headNode) return null;
+  insertAt(index, value) {
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+
+    const prev = this.at(index - 1);
+    const newNode = new Node(value, prev.nextNode);
+    prev.nextNode = newNode;
   }
 }
 
@@ -126,7 +133,7 @@ let createNode = new LinkedList();
 
 createNode.append("dog");
 createNode.append("cat");
-createNode.prepend("Human");
+// createNode.prepend("Human");
 
 console.log(createNode);
 console.log(createNode.size());
@@ -140,3 +147,7 @@ console.log(createNode.at(3));
 // console.log(createNode.contains("Hu"));
 console.log(createNode.toString());
 console.log(createNode.find("cat"));
+
+console.log(createNode.insertAt(0, "Giraffe"));
+console.log(createNode.insertAt(1, "Giraffe"));
+console.log(createNode);
