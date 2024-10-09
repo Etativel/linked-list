@@ -127,6 +127,23 @@ class LinkedList {
     const newNode = new Node(value, prev.nextNode);
     prev.nextNode = newNode;
   }
+
+  removeAt(index) {
+    if (index < 0) return "index out of range";
+    if (index === 0) {
+      if (!this.headNode) return;
+      this.headNode = this.headNode.nextNode;
+      return;
+    }
+
+    const prev = this.at(index - 1);
+    if (!prev || !prev.nextNode) return "index out of range";
+
+    const curr = prev.nextNode;
+
+    prev.nextNode = curr.nextNode;
+    curr.nextNode = null;
+  }
 }
 
 let createNode = new LinkedList();
@@ -150,4 +167,7 @@ console.log(createNode.find("cat"));
 
 console.log(createNode.insertAt(0, "Giraffe"));
 console.log(createNode.insertAt(1, "Giraffe"));
-console.log(createNode);
+
+createNode.removeAt(0);
+createNode.removeAt(2);
+console.log(createNode.toString());
