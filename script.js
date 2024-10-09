@@ -80,6 +80,21 @@ class LinkedList {
       prev.nextNode = null;
     }
   }
+
+  contains(value) {
+    if (!this.headNode) return null;
+    let temp = this.headNode;
+
+    while (temp) {
+      if (temp.value === value) return true;
+      temp = temp.nextNode;
+    }
+    return false;
+  }
+
+  find(value){
+    if (!this.headNode)
+  }
 }
 
 let createNode = new LinkedList();
@@ -94,7 +109,8 @@ console.log(createNode.head());
 console.log(createNode.tail());
 console.log(createNode.at(3));
 
-createNode.pop();
 // createNode.pop();
 // createNode.pop();
+// createNode.pop();
+console.log(createNode.contains("dog"));
 console.log(createNode);
