@@ -62,6 +62,24 @@ class LinkedList {
     }
     return null;
   }
+
+  pop() {
+    let curr = this.headNode;
+    let prev = null;
+
+    if (!this.headNode) return null;
+
+    while (curr.nextNode) {
+      prev = curr;
+      curr = curr.nextNode;
+    }
+
+    if (prev === null) {
+      this.headNode = null;
+    } else {
+      prev.nextNode = null;
+    }
+  }
 }
 
 let createNode = new LinkedList();
@@ -75,3 +93,8 @@ console.log(createNode.size());
 console.log(createNode.head());
 console.log(createNode.tail());
 console.log(createNode.at(3));
+
+createNode.pop();
+// createNode.pop();
+// createNode.pop();
+console.log(createNode);
