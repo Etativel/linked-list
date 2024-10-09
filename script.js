@@ -92,8 +92,18 @@ class LinkedList {
     return false;
   }
 
-  find(value){
-    if (!this.headNode)
+  find(value) {
+    if (!this.headNode) return null;
+
+    let temp = this.headNode;
+    let counter = 0;
+
+    while (temp) {
+      if (temp.value === value) return counter;
+      temp = temp.nextNode;
+      counter++;
+    }
+    return null;
   }
 }
 
@@ -112,5 +122,6 @@ console.log(createNode.at(3));
 // createNode.pop();
 // createNode.pop();
 // createNode.pop();
-console.log(createNode.contains("dog"));
+// console.log(createNode.contains("Hu"));
 console.log(createNode);
+console.log(createNode.find("cat"));
