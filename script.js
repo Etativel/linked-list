@@ -105,6 +105,21 @@ class LinkedList {
     }
     return null;
   }
+
+  toString() {
+    if (!this.headNode) return null;
+    let temp = this.headNode;
+    let listOfArray = [];
+    while (temp) {
+      listOfArray.push(temp.value);
+      temp = temp.nextNode;
+    }
+    return listOfArray.join(" -> ");
+  }
+
+  insertAt(index) {
+    if (!this.headNode) return null;
+  }
 }
 
 let createNode = new LinkedList();
@@ -123,5 +138,5 @@ console.log(createNode.at(3));
 // createNode.pop();
 // createNode.pop();
 // console.log(createNode.contains("Hu"));
-console.log(createNode);
+console.log(createNode.toString());
 console.log(createNode.find("cat"));
